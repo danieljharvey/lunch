@@ -1,0 +1,23 @@
+{
+  "name": "lunch",
+  "version": "0.1.0",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w",
+    "start": "yarn build && node lib/js/src/index.bs.js"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^2.2.3"
+  },
+  "dependencies": {
+    "bs-chalk": "^0.2.1",
+    "bs-json": "^1.0.1",
+    "chalk": "^2.4.0"
+  }
+}

@@ -22,7 +22,9 @@ let decoded =
     let maybePackage = Decoder.decodedData(text);
     switch (maybePackage) {
     | Some(pack) =>
-      Js.log(Chalk.red(pack.name));
+      Js.log(
+        Chalk.red(pack.name) ++ " version " ++ Chalk.yellow(pack.version),
+      );
       List.iter(Js.log, pack.scripts);
     | _ => Js.log("Could not decode")
     };

@@ -6,5 +6,6 @@ type script = (name, command);
 
 type package = {
   name: string,
+  version: string,
   scripts: list(script),
 };

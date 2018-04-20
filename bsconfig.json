@@ -12,7 +12,8 @@
   "suffix": ".bs.js",
   "bs-dependencies": [
     "bs-chalk",
-    "bs-json"
+    "bs-json",
+    "@glennsl/bs-jest"
   ],
   "refmt": 3
 }

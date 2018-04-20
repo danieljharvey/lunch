@@ -11,6 +11,7 @@ let convertRecord = obj : Types.package => {
   name: obj.name,
   version: obj.version,
   scripts: convertScripts(obj.scripts),
+  search: "node"
 };
 
 module Decode = {

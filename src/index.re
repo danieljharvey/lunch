@@ -1,4 +1,5 @@
 open Node;
+open Types;
 
 let makePath = (cwd: string) : string => cwd ++ "/package.json";
 
@@ -16,17 +17,29 @@ switch (json) {
 | _ => ()
 };
 
-let decoded =
+let defaultState: package = {
+  name: "Not found",
+  version: "0.0.0",
+  search: "clean",
+  scripts: []
+};
+
+let package: package =
   switch (json) {
   | Some(text) =>
     let maybePackage = Decoder.decodedData(text);
     switch (maybePackage) {
-    | Some(pack) =>
-      Js.log(
-        Chalk.red(pack.name) ++ " version " ++ Chalk.yellow(pack.version),
-      );
-      List.iter(Js.log, pack.scripts);
-    | _ => Js.log("Could not decode")
+    | Some(pack) => pack
+    | _ => defaultState
     };
-  | _ => ()
+  | _ => defaultState
   };
+
+
+Js.log(
+  Chalk.red(package.name) ++ " version " ++ Chalk.yellow(package.version),
+);
+/*List.iter(Js.log, package.scripts);*/
+
+let filtered = Filter.getFilteredScripts(package.search, package.scripts);
+List.iter(Js.log, filtered);
